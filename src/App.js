@@ -31,7 +31,7 @@ export default function App() {
   }, [selectedDate]);
 
   const fetchExpenses = async () => {
-    const response = await axios.get("http://localhost:5000/api/expenses");
+    const response = await axios.get("https://expenses-tracker-server-e5h3.onrender.com/api/expenses");
     setExpenses(response.data);
     processExpenses(response.data);
   };
@@ -79,13 +79,13 @@ export default function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (editingId) {
-      await axios.put(`http://localhost:5000/api/expenses/${editingId}`, {
+      await axios.put(`https://expenses-tracker-server-e5h3.onrender.com/api/expenses/${editingId}`, {
         amount: Number(amount),
         currency,
         comment,
       });
     } else {
-      await axios.post("http://localhost:5000/api/expenses", {
+      await axios.post("https://expenses-tracker-server-e5h3.onrender.com/api/expenses", {
         amount: Number(amount),
         currency,
         comment,
@@ -107,7 +107,7 @@ export default function App() {
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/expenses/${id}`);
+    await axios.delete(`https://expenses-tracker-server-e5h3.onrender.com/api/expenses/${id}`);
     fetchExpenses();
   };
 
